@@ -3,2199 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MULTICOLOR SQUARE - Ultimate Creative Studio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Elite Business Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #151932;
-            --bg-tertiary: #1a1f3a;
-            --text-primary: #e8eaf6;
-            --text-secondary: #9fa8da;
-            --text-dim: #5c6bc0;
-            --accent-1: #7c3aed;
-            --accent-2: #ec4899;
-            --accent-3: #06b6d4;
-            --border-glow: rgba(124, 58, 237, 0.3);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
-            --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.6);
-        }
-
-        @keyframes rainbow-border {
-            0%, 100% { border-color: #ff0080; box-shadow: 0 0 20px #ff0080; }
-            14% { border-color: #ff8c00; box-shadow: 0 0 20px #ff8c00; }
-            28% { border-color: #ffd700; box-shadow: 0 0 20px #ffd700; }
-            42% { border-color: #00ff00; box-shadow: 0 0 20px #00ff00; }
-            57% { border-color: #00ffff; box-shadow: 0 0 20px #00ffff; }
-            71% { border-color: #0080ff; box-shadow: 0 0 20px #0080ff; }
-            85% { border-color: #8000ff; box-shadow: 0 0 20px #8000ff; }
-        }
-
-        @keyframes float-smooth {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.4); }
-            50% { box-shadow: 0 0 40px rgba(236, 72, 153, 0.6); }
-        }
-
-        @keyframes slide-up {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
-        @keyframes rotate-hue {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --dark-bg: #0a0a0b;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            overflow: hidden;
-        }
-
-        #animated-background {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.15), transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(236, 72, 153, 0.15), transparent 50%),
-                radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.15), transparent 50%);
-            animation: rotate-hue 20s linear infinite;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: float-smooth 8s ease-in-out infinite;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #7c3aed, transparent);
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, #ec4899, transparent);
-            bottom: 10%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .orb-3 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #06b6d4, transparent);
-            top: 50%;
-            left: 50%;
-            animation-delay: 4s;
-        }
-
-        #app-container {
-            position: relative;
-            z-index: 1;
-            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
             display: flex;
-            flex-direction: column;
-        }
-
-        /* Header */
-        #app-header {
-            height: 65px;
-            background: rgba(21, 25, 50, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
-            display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-            box-shadow: var(--shadow-sm);
-            animation: slide-up 0.6s ease;
-        }
-
-        #app-logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .logo-square {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4);
-            border-radius: 10px;
-            animation: rainbow-border 6s linear infinite, pulse-glow 2s ease-in-out infinite;
-            position: relative;
+            min-height: 100vh;
+            margin: 0;
             overflow: hidden;
+            background: radial-gradient(circle at center, #1a1a1d 0%, #050505 100%);
         }
 
-        .logo-square::before {
+        /* Премиальная карточка */
+        .calculator-card {
+            background: rgba(18, 18, 20, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(212, 175, 55, 0.15); /* Тонкая золотая нить */
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        /* Эффект свечения за калькулятором */
+        .calculator-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shimmer 2s linear infinite;
-        }
-
-        #app-title {
-            font-size: 20px;
-            font-weight: 800;
-            background: linear-gradient(90deg, #7c3aed, #ec4899, #06b6d4, #7c3aed);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s linear infinite;
-        }
-
-        .header-btn {
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            color: var(--text-primary);
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .header-btn:hover {
-            background: rgba(124, 58, 237, 0.3);
-            border-color: rgba(124, 58, 237, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(124, 58, 237, 0.3);
-        }
-
-        #main-content {
-            flex: 1;
-            display: flex;
-            overflow: hidden;
-        }
-
-        /* Sidebar */
-        #left-sidebar {
-            width: 72px;
-            background: rgba(21, 25, 50, 0.85);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(124, 58, 237, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 16px 0;
-            gap: 8px;
-            overflow-y: auto;
-        }
-
-        .tool-btn {
-            width: 54px;
-            height: 54px;
-            background: rgba(26, 31, 58, 0.6);
-            border: 2px solid transparent;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .tool-btn i {
-            font-size: 20px;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .tool-btn:hover {
-            transform: scale(1.1) rotate(5deg);
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(236, 72, 153, 0.3));
-            border-color: rgba(124, 58, 237, 0.5);
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
-        }
-
-        .tool-btn:hover i {
-            color: #fff;
-        }
-
-        .tool-btn.active {
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            border-color: transparent;
-            box-shadow: 0 0 30px rgba(124, 58, 237, 0.6);
-        }
-
-        .tool-btn.active i {
-            color: white;
-        }
-
-        .tooltip {
-            position: absolute;
-            left: 68px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .tool-btn:hover .tooltip {
-            opacity: 1;
-            left: 74px;
-        }
-
-        /* Settings Panel */
-        #settings-panel {
-            width: 280px;
-            background: rgba(21, 25, 50, 0.85);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(124, 58, 237, 0.2);
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .settings-group {
-            margin-bottom: 20px;
-        }
-
-        .settings-label {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .slider {
-            width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: rgba(124, 58, 237, 0.2);
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(124, 58, 237, 0.6);
-            transition: all 0.3s ease;
-        }
-
-        .slider::-webkit-slider-thumb:hover {
-            transform: scale(1.3);
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.8);
-        }
-
-        .value-display {
-            display: inline-block;
-            min-width: 45px;
-            text-align: center;
-            background: rgba(124, 58, 237, 0.2);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-left: 10px;
-        }
-
-        select, input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 8px 12px;
-            background: rgba(26, 31, 58, 0.8);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 13px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        select:focus, input:focus {
-            border-color: rgba(124, 58, 237, 0.6);
-            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
-        }
-
-        /* Gradient Picker */
-        .gradient-controls {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .gradient-type-btn {
-            flex: 1;
-            padding: 8px;
-            background: rgba(26, 31, 58, 0.8);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 6px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 11px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .gradient-type-btn.active {
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
-            border-color: transparent;
-        }
-
-        .gradient-preview {
-            width: 100%;
-            height: 60px;
-            border-radius: 8px;
-            margin-top: 10px;
-            border: 2px solid rgba(124, 58, 237, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .gradient-preview:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
-        }
-
-        .color-stops {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        .color-stop {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 2px solid rgba(124, 58, 237, 0.4);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .color-stop:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
-        }
-
-        .color-stop-remove {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            width: 18px;
-            height: 18px;
-            background: #ff0080;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: white;
-            cursor: pointer;
-        }
-
-        .color-stop:hover .color-stop-remove {
-            display: flex;
-        }
-
-        /* Color Palette */
-        .color-palette {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 8px;
-        }
-
-        .palette-color {
-            aspect-ratio: 1;
-            border-radius: 6px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .palette-color::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
             z-index: -1;
+            border-radius: 24px;
         }
 
-        .palette-color:hover::after,
-        .palette-color.active::after {
-            opacity: 1;
+        /* Кнопки */
+        .btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.05em;
+            border: 1px solid transparent;
         }
 
-        .palette-color:hover {
-            transform: scale(1.15) rotate(5deg);
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-1px);
         }
 
-        /* Canvas Area */
-        #canvas-area {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: var(--bg-primary);
+        .btn:active {
+            transform: scale(0.96) translateY(0);
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        #canvas-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: auto;
-            padding: 20px;
+        /* Операторы и Равно */
+        .btn-operator {
+            color: var(--gold);
         }
 
-        #canvas-wrapper {
-            position: relative;
-            box-shadow: 0 0 60px rgba(124, 58, 237, 0.4);
-            border-radius: 12px;
-            transition: all 0.4s ease;
+        .btn-equals {
+            background: linear-gradient(135deg, #d4af37 0%, #aa8a2e 100%);
+            color: #000;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
 
-        #canvas-wrapper.rainbow-mode {
-            animation: rainbow-border 3s linear infinite;
+        .btn-equals:hover {
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            filter: brightness(1.1);
         }
 
-        #main-canvas {
-            display: block;
-            background: white;
-            border-radius: 12px;
-            cursor: crosshair;
+        /* Анимация появления цифр */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(15px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
-        #preview-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            border-radius: 12px;
+        .result-anim {
+            animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Effects Panel */
-        .effects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 10px;
+        /* Кастомный скроллбар истории */
+        .history-container::-webkit-scrollbar {
+            width: 3px;
         }
-
-        .effect-btn {
-            padding: 10px;
-            background: rgba(26, 31, 58, 0.8);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .effect-btn:hover {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.4), rgba(236, 72, 153, 0.4));
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
-        }
-
-        .effect-btn.active {
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
-        }
-
-        /* Social Share - Compact */
-        #social-share {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-        }
-
-        .share-trigger {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.5);
-            transition: all 0.3s ease;
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        .share-trigger:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 32px rgba(236, 72, 153, 0.6);
-        }
-
-        .share-trigger i {
-            font-size: 20px;
-            color: white;
-        }
-
-        .share-menu {
-            position: absolute;
-            bottom: 60px;
-            right: 0;
-            background: rgba(21, 25, 50, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 12px;
-            padding: 12px;
-            display: none;
-            flex-direction: column;
-            gap: 8px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .share-menu.active {
-            display: flex;
-            animation: slide-up 0.3s ease;
-        }
-
-        .social-btn {
-            width: 44px;
-            height: 44px;
+        .history-container::-webkit-scrollbar-thumb {
+            background: var(--gold);
             border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: white;
         }
 
-        .social-btn.telegram { background: linear-gradient(135deg, #0088cc, #229ED9); }
-        .social-btn.vk { background: linear-gradient(135deg, #4680C2, #5B8EC9); }
-        .social-btn.pinterest { background: linear-gradient(135deg, #E60023, #E95950); }
-        .social-btn.whatsapp { background: linear-gradient(135deg, #25D366, #3DE077); }
-        .social-btn.twitter { background: linear-gradient(135deg, #1DA1F2, #3AAEF2); }
-
-        .social-btn:hover {
-            transform: scale(1.15) rotate(5deg);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        .history-item {
+            transition: all 0.2s ease;
+            border-left: 0 solid var(--gold);
         }
 
-        /* Bottom Toolbar */
-        #bottom-toolbar {
-            height: 70px;
-            background: rgba(21, 25, 50, 0.85);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(124, 58, 237, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 0 20px;
-        }
-
-        .action-btn {
-            padding: 10px 18px;
-            background: rgba(124, 58, 237, 0.2);
-            border: 1px solid rgba(124, 58, 237, 0.4);
-            border-radius: 8px;
-            color: var(--text-primary);
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .action-btn:hover {
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
-        }
-
-        .action-btn.primary {
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            border: none;
-        }
-
-        .zoom-control {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .zoom-btn {
-            width: 36px;
-            height: 36px;
-            background: rgba(26, 31, 58, 0.8);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .zoom-btn:hover {
-            background: rgba(124, 58, 237, 0.4);
-            transform: scale(1.1);
-        }
-
-        .zoom-display {
-            min-width: 55px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 14px;
-            background: rgba(124, 58, 237, 0.2);
-            padding: 8px 12px;
-            border-radius: 8px;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: rgba(21, 25, 50, 0.98);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 16px;
-            padding: 28px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-            animation: slide-up 0.4s ease;
-        }
-
-        .modal-header {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #7c3aed, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .modal-footer {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            margin-top: 20px;
-        }
-
-        /* Layers Panel */
-        #layers-panel {
-            position: fixed;
-            right: -300px;
-            top: 65px;
-            width: 280px;
-            height: calc(100vh - 135px);
-            background: rgba(21, 25, 50, 0.95);
-            backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(124, 58, 237, 0.3);
-            padding: 20px;
-            transition: right 0.4s ease;
-            overflow-y: auto;
-            z-index: 50;
-        }
-
-        #layers-panel.open {
-            right: 0;
-        }
-
-        .layer-item {
-            background: rgba(26, 31, 58, 0.8);
-            border: 2px solid rgba(124, 58, 237, 0.2);
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .layer-item:hover {
-            background: rgba(124, 58, 237, 0.2);
-            transform: translateX(-5px);
-            border-color: rgba(124, 58, 237, 0.5);
-        }
-
-        .layer-item.active {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(236, 72, 153, 0.3));
-            border-color: rgba(124, 58, 237, 0.7);
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
-        }
-
-        .layer-preview {
-            width: 42px;
-            height: 42px;
-            border: 2px solid rgba(124, 58, 237, 0.3);
-            border-radius: 8px;
-            background: white;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(26, 31, 58, 0.5);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #ec4899, #7c3aed);
-        }
-
-        /* Rainbow mode toggle */
-        .rainbow-toggle {
-            width: 50px;
-            height: 26px;
-            background: rgba(26, 31, 58, 0.8);
-            border: 2px solid rgba(124, 58, 237, 0.3);
-            border-radius: 13px;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .rainbow-toggle.active {
-            background: linear-gradient(90deg, #ff0080, #ff8c00, #ffd700, #00ff00, #00ffff, #0080ff, #8000ff);
-            border-color: transparent;
-            animation: rainbow-border 3s linear infinite;
-        }
-
-        .rainbow-toggle-handle {
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 1px;
-            left: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .rainbow-toggle.active .rainbow-toggle-handle {
-            left: 26px;
+        .history-item:hover {
+            border-left-width: 3px;
+            padding-left: 12px;
+            background: rgba(255, 255, 255, 0.03);
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div id="animated-background">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
 
-    <!-- Main App Container -->
-    <div id="app-container">
-        <!-- Header -->
-        <header id="app-header">
-            <div id="app-logo">
-                <div class="logo-square"></div>
-                <h1 id="app-title">MULTICOLOR SQUARE</h1>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <button class="header-btn" id="canvas-size-btn">
-                    <i class="fas fa-expand-arrows-alt"></i> Холст
-                </button>
-                <button class="header-btn" id="effects-btn">
-                    <i class="fas fa-magic"></i> Эффекты
-                </button>
-                <button class="header-btn" id="filters-btn">
-                    <i class="fas fa-palette"></i> Фильтры
-                </button>
-                <button class="header-btn" id="new-btn">
-                    <i class="fas fa-file"></i> Новый
-                </button>
-                <button class="header-btn" id="open-btn">
-                    <i class="fas fa-folder-open"></i> Открыть
-                </button>
-                <button class="header-btn" id="save-btn">
-                    <i class="fas fa-save"></i> Сохранить
-                </button>
-                <button class="header-btn" id="export-btn">
-                    <i class="fas fa-download"></i> Экспорт
-                </button>
-                <button class="header-btn" id="layers-btn">
-                    <i class="fas fa-layer-group"></i> Слои
-                </button>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <div id="main-content">
-            <!-- Left Sidebar -->
-            <div id="left-sidebar">
-                <div class="tool-btn active" data-tool="brush">
-                    <i class="fas fa-paintbrush"></i>
-                    <span class="tooltip">Кисть (B)</span>
-                </div>
-                <div class="tool-btn" data-tool="eraser">
-                    <i class="fas fa-eraser"></i>
-                    <span class="tooltip">Ластик (E)</span>
-                </div>
-                <div class="tool-btn" data-tool="fill">
-                    <i class="fas fa-fill-drip"></i>
-                    <span class="tooltip">Заливка (G)</span>
-                </div>
-                <div class="tool-btn" data-tool="gradient">
-                    <i class="fas fa-fill"></i>
-                    <span class="tooltip">Градиент (D)</span>
-                </div>
-                <div class="tool-btn" data-tool="picker">
-                    <i class="fas fa-eye-dropper"></i>
-                    <span class="tooltip">Пипетка (I)</span>
-                </div>
-                <div class="tool-btn" data-tool="spray">
-                    <i class="fas fa-spray-can"></i>
-                    <span class="tooltip">Аэрограф (S)</span>
-                </div>
-                <div class="tool-btn" data-tool="blur">
-                    <i class="fas fa-water"></i>
-                    <span class="tooltip">Размытие (U)</span>
-                </div>
-                <div class="tool-btn" data-tool="smudge">
-                    <i class="fas fa-hand-paper"></i>
-                    <span class="tooltip">Палец (M)</span>
-                </div>
-                <div class="tool-btn" data-tool="line">
-                    <i class="fas fa-grip-lines"></i>
-                    <span class="tooltip">Линия (L)</span>
-                </div>
-                <div class="tool-btn" data-tool="rectangle">
-                    <i class="fas fa-vector-square"></i>
-                    <span class="tooltip">Прямоугольник (R)</span>
-                </div>
-                <div class="tool-btn" data-tool="circle">
-                    <i class="far fa-circle"></i>
-                    <span class="tooltip">Круг (C)</span>
-                </div>
-                <div class="tool-btn" data-tool="triangle">
-                    <i class="fas fa-play"></i>
-                    <span class="tooltip">Треугольник (T)</span>
-                </div>
-                <div class="tool-btn" data-tool="star">
-                    <i class="far fa-star"></i>
-                    <span class="tooltip">Звезда (V)</span>
-                </div>
-                <div class="tool-btn" data-tool="polygon">
-                    <i class="fas fa-draw-polygon"></i>
-                    <span class="tooltip">Многоугольник (P)</span>
-                </div>
-                <div class="tool-btn" data-tool="text">
-                    <i class="fas fa-font"></i>
-                    <span class="tooltip">Текст (A)</span>
-                </div>
-            </div>
-
-            <!-- Settings Panel -->
-            <div id="settings-panel">
-                <!-- Brush Settings -->
-                <div class="settings-group">
-                    <label class="settings-label">Размер кисти</label>
-                    <input type="range" class="slider" id="brush-size" min="1" max="150" value="5">
-                    <span class="value-display" id="brush-size-value">5px</span>
-                </div>
-
-                <div class="settings-group">
-                    <label class="settings-label">Прозрачность</label>
-                    <input type="range" class="slider" id="opacity" min="0" max="100" value="100">
-                    <span class="value-display" id="opacity-value">100%</span>
-                </div>
-
-                <div class="settings-group">
-                    <label class="settings-label">Твердость</label>
-                    <input type="range" class="slider" id="hardness" min="0" max="100" value="100">
-                    <span class="value-display" id="hardness-value">100%</span>
-                </div>
-
-                <!-- Rainbow Mode Toggle -->
-                <div class="settings-group">
-                    <label class="settings-label">Радужный режим</label>
-                    <div class="rainbow-toggle" id="rainbow-toggle">
-                        <div class="rainbow-toggle-handle"></div>
-                    </div>
-                </div>
-
-                <!-- Gradient Builder -->
-                <div class="settings-group" id="gradient-settings" style="display: none;">
-                    <label class="settings-label">Градиент</label>
-                    <div class="gradient-controls">
-                        <button class="gradient-type-btn active" data-type="linear">Линейный</button>
-                        <button class="gradient-type-btn" data-type="radial">Радиальный</button>
-                        <button class="gradient-type-btn" data-type="conic">Конический</button>
-                    </div>
-                    <div class="gradient-preview" id="gradient-preview"></div>
-                    <div class="color-stops" id="color-stops"></div>
-                    <button class="action-btn" id="add-color-stop" style="width: 100%; margin-top: 10px;">
-                        <i class="fas fa-plus"></i> Добавить цвет
-                    </button>
-                    <div style="margin-top: 10px;">
-                        <label class="settings-label">Угол</label>
-                        <input type="range" class="slider" id="gradient-angle" min="0" max="360" value="90">
-                        <span class="value-display" id="gradient-angle-value">90°</span>
-                    </div>
-                </div>
-
-                <!-- Glow Effect -->
-                <div class="settings-group">
-                    <label class="settings-label">Свечение</label>
-                    <input type="range" class="slider" id="glow-intensity" min="0" max="50" value="0">
-                    <span class="value-display" id="glow-intensity-value">0px</span>
-                </div>
-
-                <!-- Blend Mode -->
-                <div class="settings-group">
-                    <label class="settings-label">Режим наложения</label>
-                    <select id="blend-mode">
-                        <option value="source-over">Normal</option>
-                        <option value="multiply">Multiply</option>
-                        <option value="screen">Screen</option>
-                        <option value="overlay">Overlay</option>
-                        <option value="darken">Darken</option>
-                        <option value="lighten">Lighten</option>
-                        <option value="color-dodge">Color Dodge</option>
-                        <option value="color-burn">Color Burn</option>
-                        <option value="hard-light">Hard Light</option>
-                        <option value="soft-light">Soft Light</option>
-                        <option value="difference">Difference</option>
-                        <option value="exclusion">Exclusion</option>
-                    </select>
-                </div>
-
-                <!-- Color Picker -->
-                <div class="settings-group">
-                    <label class="settings-label">Цвета</label>
-                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                        <div style="flex: 1;">
-                            <div class="color-stop" id="primary-color-swatch" style="width: 100%; height: 50px; background: #000000;"></div>
-                            <input type="color" id="primary-color" value="#000000" style="display: none;">
-                        </div>
-                        <div style="flex: 1;">
-                            <div class="color-stop" id="secondary-color-swatch" style="width: 100%; height: 50px; background: #ffffff;"></div>
-                            <input type="color" id="secondary-color" value="#ffffff" style="display: none;">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Color Palette -->
-                <div class="settings-group">
-                    <label class="settings-label">Палитра</label>
-                    <div class="color-palette" id="color-palette"></div>
-                </div>
-
-                <!-- Spray Settings -->
-                <div class="settings-group" id="spray-settings" style="display: none;">
-                    <label class="settings-label">Плотность</label>
-                    <input type="range" class="slider" id="spray-density" min="5" max="100" value="30">
-                    <span class="value-display" id="spray-density-value">30</span>
-                </div>
-
-                <!-- Text Settings -->
-                <div class="settings-group" id="text-settings" style="display: none;">
-                    <label class="settings-label">Шрифт</label>
-                    <select id="font-family">
-                        <option value="Arial">Arial</option>
-                        <option value="Helvetica">Helvetica</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="Impact">Impact</option>
-                    </select>
-                    <div style="margin-top: 10px;">
-                        <label class="settings-label">Размер шрифта</label>
-                        <input type="range" class="slider" id="font-size" min="12" max="200" value="32">
-                        <span class="value-display" id="font-size-value">32px</span>
-                    </div>
-                </div>
-
-                <!-- Polygon Settings -->
-                <div class="settings-group" id="polygon-settings" style="display: none;">
-                    <label class="settings-label">Стороны</label>
-                    <input type="range" class="slider" id="polygon-sides" min="3" max="12" value="6">
-                    <span class="value-display" id="polygon-sides-value">6</span>
-                </div>
-            </div>
-
-            <!-- Canvas Area -->
-            <div id="canvas-area">
-                <div id="canvas-container">
-                    <div id="canvas-wrapper">
-                        <canvas id="main-canvas" width="900" height="650"></canvas>
-                        <canvas id="preview-canvas" width="900" height="650"></canvas>
-                    </div>
-                </div>
-
-                <!-- Bottom Toolbar -->
-                <div id="bottom-toolbar">
-                    <button class="action-btn" id="undo-btn">
-                        <i class="fas fa-undo-alt"></i> Отменить
-                    </button>
-                    <button class="action-btn" id="redo-btn">
-                        <i class="fas fa-redo-alt"></i> Вернуть
-                    </button>
-                    
-                    <div class="zoom-control">
-                        <button class="zoom-btn" id="zoom-out">
-                            <i class="fas fa-search-minus"></i>
-                        </button>
-                        <span class="zoom-display" id="zoom-display">100%</span>
-                        <button class="zoom-btn" id="zoom-in">
-                            <i class="fas fa-search-plus"></i>
-                        </button>
-                        <button class="zoom-btn" id="zoom-reset">
-                            <i class="fas fa-compress"></i>
-                        </button>
-                    </div>
-
-                    <button class="action-btn" id="flip-h-btn">
-                        <i class="fas fa-arrows-alt-h"></i> Отразить H
-                    </button>
-                    <button class="action-btn" id="flip-v-btn">
-                        <i class="fas fa-arrows-alt-v"></i> Отразить V
-                    </button>
-                    <button class="action-btn" id="rotate-btn">
-                        <i class="fas fa-redo"></i> Поверн 90°
-                    </button>
-                    <button class="action-btn" id="clear-btn">
-                        <i class="fas fa-trash-alt"></i> Очистить
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Social Share -->
-    <div id="social-share">
-        <div class="share-trigger">
-            <i class="fas fa-share-alt"></i>
-        </div>
-        <div class="share-menu">
-            <button class="social-btn telegram" data-platform="telegram">
-                <i class="fab fa-telegram-plane"></i>
-            </button>
-            <button class="social-btn vk" data-platform="vk">
-                <i class="fab fa-vk"></i>
-            </button>
-            <button class="social-btn pinterest" data-platform="pinterest">
-                <i class="fab fa-pinterest-p"></i>
-            </button>
-            <button class="social-btn whatsapp" data-platform="whatsapp">
-                <i class="fab fa-whatsapp"></i>
-            </button>
-            <button class="social-btn twitter" data-platform="twitter">
-                <i class="fab fa-twitter"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Layers Panel -->
-    <div id="layers-panel">
-        <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 700;">Слои</h3>
-        <button class="action-btn primary" id="add-layer-btn" style="width: 100%; margin-bottom: 16px;">
-            <i class="fas fa-plus"></i> Новый слой
+<div class="calculator-card w-full max-w-[400px] rounded-[2rem] overflow-hidden flex flex-col h-[90vh] sm:h-auto sm:aspect-[0.7/1]">
+    
+    <!-- Секция Дисплея -->
+    <div class="p-8 pb-4 flex flex-col justify-end items-end bg-gradient-to-b from-transparent to-white/[0.02] h-1/3 relative">
+        <button id="historyBtn" class="absolute top-6 left-6 text-white/30 hover:text-white/80 transition-all duration-300" title="История">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
         </button>
-        <div id="layers-list"></div>
+
+        <div id="prevDisplay" class="text-white/20 text-xs mb-2 h-4 font-light tracking-[0.2em] uppercase overflow-hidden"></div>
+        <div id="currDisplay" class="text-white text-6xl font-extralight tracking-tighter break-all result-anim text-right w-full">0</div>
     </div>
 
-    <!-- Effects Modal -->
-    <div class="modal" id="effects-modal">
-        <div class="modal-content">
-            <div class="modal-header">Эффекты и трансформации</div>
-            <div>
-                <div class="settings-label">Выберите эффект</div>
-                <div class="effects-grid">
-                    <button class="effect-btn" data-effect="glow">
-                        <i class="fas fa-sun"></i> Свечение
-                    </button>
-                    <button class="effect-btn" data-effect="shadow">
-                        <i class="fas fa-moon"></i> Тень
-                    </button>
-                    <button class="effect-btn" data-effect="emboss">
-                        <i class="fas fa-mountain"></i> Рельеф
-                    </button>
-                    <button class="effect-btn" data-effect="edge">
-                        <i class="fas fa-border-style"></i> Края
-                    </button>
-                    <button class="effect-btn" data-effect="pixelate">
-                        <i class="fas fa-th"></i> Пиксели
-                    </button>
-                    <button class="effect-btn" data-effect="mosaic">
-                        <i class="fas fa-grip-horizontal"></i> Мозаика
-                    </button>
-                    <button class="effect-btn" data-effect="vignette">
-                        <i class="fas fa-dot-circle"></i> Виньетка
-                    </button>
-                    <button class="effect-btn" data-effect="chromatic">
-                        <i class="fas fa-adjust"></i> Хроматика
-                    </button>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="action-btn" id="effects-close-btn">Закрыть</button>
-            </div>
+    <!-- Панель Истории -->
+    <div id="historyPanel" class="hidden absolute inset-x-0 bottom-0 top-[33%] bg-black/95 z-20 p-8 flex flex-col animate-in fade-in slide-in-from-bottom-10 duration-500">
+        <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+            <h3 class="text-white/60 text-xs font-medium tracking-[0.3em] uppercase">Архив операций</h3>
+            <button id="clearHistory" class="text-white/30 text-[10px] hover:text-red-400 uppercase tracking-widest transition-colors">Очистить</button>
         </div>
-    </div>
-
-    <!-- Filters Modal -->
-    <div class="modal" id="filters-modal">
-        <div class="modal-content">
-            <div class="modal-header">Фильтры изображения</div>
-            <div>
-                <div class="settings-label">Цветовые фильтры</div>
-                <div class="effects-grid">
-                    <button class="effect-btn" data-filter="grayscale">
-                        <i class="fas fa-palette"></i> Ч/Б
-                    </button>
-                    <button class="effect-btn" data-filter="sepia">
-                        <i class="fas fa-image"></i> Сепия
-                    </button>
-                    <button class="effect-btn" data-filter="invert">
-                        <i class="fas fa-exchange-alt"></i> Инверсия
-                    </button>
-                    <button class="effect-btn" data-filter="vintage">
-                        <i class="fas fa-film"></i> Винтаж
-                    </button>
-                    <button class="effect-btn" data-filter="warm">
-                        <i class="fas fa-fire"></i> Теплый
-                    </button>
-                    <button class="effect-btn" data-filter="cool">
-                        <i class="fas fa-snowflake"></i> Холодный
-                    </button>
-                    <button class="effect-btn" data-filter="brightness">
-                        <i class="fas fa-sun"></i> Яркость+
-                    </button>
-                    <button class="effect-btn" data-filter="darkness">
-                        <i class="fas fa-moon"></i> Яркость-
-                    </button>
-                    <button class="effect-btn" data-filter="contrast">
-                        <i class="fas fa-adjust"></i> Контраст
-                    </button>
-                    <button class="effect-btn" data-filter="saturation">
-                        <i class="fas fa-tint"></i> Насыщен+
-                    </button>
-                    <button class="effect-btn" data-filter="blur">
-                        <i class="fas fa-water"></i> Размытие
-                    </button>
-                    <button class="effect-btn" data-filter="sharpen">
-                        <i class="fas fa-star"></i> Резкость
-                    </button>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="action-btn" id="filters-close-btn">Закрыть</button>
-            </div>
+        <div id="historyList" class="history-container flex-1 overflow-y-auto space-y-4">
+            <div class="text-white/10 text-center mt-10 italic text-sm">Нет записей</div>
         </div>
+        <button id="closeHistory" class="mt-6 py-4 border border-white/10 text-white/40 text-[10px] tracking-[0.4em] uppercase hover:bg-white/5 transition-all">Закрыть</button>
     </div>
 
-    <!-- Canvas Size Modal -->
-    <div class="modal" id="canvas-size-modal">
-        <div class="modal-content">
-            <div class="modal-header">Размер холста</div>
-            <div>
-                <div class="settings-group">
-                    <label class="settings-label">Пресеты</label>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                        <button class="effect-btn" data-width="800" data-height="600">800×600</button>
-                        <button class="effect-btn" data-width="1024" data-height="768">1024×768</button>
-                        <button class="effect-btn" data-width="1280" data-height="720">1280×720</button>
-                        <button class="effect-btn" data-width="1920" data-height="1080">1920×1080</button>
-                        <button class="effect-btn" data-width="1080" data-height="1080">1080×1080</button>
-                        <button class="effect-btn" data-width="2560" data-height="1440">2560×1440</button>
-                    </div>
-                </div>
-                <div class="settings-group">
-                    <label class="settings-label">Произвольный</label>
-                    <div style="display: flex; gap: 10px; align-items: center;">
-                        <input type="number" id="custom-width" value="900" min="1" max="4000">
-                        <span>×</span>
-                        <input type="number" id="custom-height" value="650" min="1" max="4000">
-                    </div>
-                </div>
-                <div class="settings-group">
-                    <label class="settings-label">Режим</label>
-                    <select id="resize-mode">
-                        <option value="scale">Масштабировать</option>
-                        <option value="crop">Обрезать</option>
-                        <option value="clear">Очистить</option>
-                    </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="action-btn" id="canvas-size-cancel">Отмена</button>
-                <button class="action-btn primary" id="canvas-size-confirm">
-                    <i class="fas fa-check"></i> Применить
-                </button>
-            </div>
-        </div>
+    <!-- Клавиатура -->
+    <div class="flex-1 p-6 grid grid-cols-4 gap-4 bg-transparent">
+        
+        <!-- Функциональный ряд (Верхний) -->
+        <button class="btn bg-white/5 text-white/40 rounded-2xl text-[10px] uppercase font-medium tracking-widest" onclick="clearDisplay()">AC</button>
+        <button class="btn bg-white/5 text-white/40 rounded-2xl text-[10px] uppercase font-medium tracking-widest" onclick="deleteChar()">⌫</button>
+        <button class="btn bg-white/5 text-white/40 rounded-2xl text-[10px] uppercase font-medium tracking-widest" onclick="appendValue('%')">%</button>
+        <button class="btn bg-white/5 btn-operator rounded-2xl text-xl font-light" onclick="appendValue('/')">÷</button>
+
+        <!-- Числа и Операторы -->
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('7')">7</button>
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('8')">8</button>
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('9')">9</button>
+        <button class="btn bg-white/5 btn-operator rounded-2xl text-xl font-light" onclick="appendValue('*')">×</button>
+
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('4')">4</button>
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('5')">5</button>
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('6')">6</button>
+        <button class="btn bg-white/5 btn-operator rounded-2xl text-xl font-light" onclick="appendValue('-')">−</button>
+
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('1')">1</button>
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('2')">2</button>
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('3')">3</button>
+        <button class="btn bg-white/5 btn-operator rounded-2xl text-xl font-light" onclick="appendValue('+')">+</button>
+
+        <!-- Нижний ряд -->
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('.')">.</button>
+        <button class="btn text-white/80 rounded-2xl text-xl font-light" onclick="appendValue('0')">0</button>
+        <button class="btn col-span-2 btn-equals rounded-2xl text-xl" onclick="calculate()">=</button>
     </div>
+</div>
 
-    <!-- Export Modal -->
-    <div class="modal" id="export-modal">
-        <div class="modal-content">
-            <div class="modal-header">Экспорт изображения</div>
-            <div>
-                <div class="settings-group">
-                    <label class="settings-label">Формат</label>
-                    <select id="export-format">
-                        <option value="png">PNG</option>
-                        <option value="jpeg">JPEG</option>
-                        <option value="webp">WebP</option>
-                    </select>
-                </div>
-                <div class="settings-group">
-                    <label class="settings-label">Качество</label>
-                    <input type="range" class="slider" id="export-quality" min="0" max="100" value="95">
-                    <span class="value-display" id="export-quality-value">95%</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="action-btn" id="export-cancel">Отмена</button>
-                <button class="action-btn primary" id="export-confirm">
-                    <i class="fas fa-download"></i> Скачать
-                </button>
-            </div>
-        </div>
-    </div>
+<script>
+    let currentInput = '0';
+    let previousInput = '';
+    let shouldResetScreen = false;
+    let history = [];
 
-    <script>
-        const app = {
-            canvas: document.getElementById('main-canvas'),
-            previewCanvas: document.getElementById('preview-canvas'),
-            ctx: null,
-            previewCtx: null,
-            currentTool: 'brush',
-            isDrawing: false,
-            brushSize: 5,
-            opacity: 100,
-            hardness: 100,
-            blendMode: 'source-over',
-            primaryColor: '#000000',
-            secondaryColor: '#ffffff',
-            zoom: 1,
-            layers: [],
-            currentLayer: 0,
-            history: [],
-            historyStep: -1,
-            maxHistory: 50,
-            startX: 0,
-            startY: 0,
-            lastX: 0,
-            lastY: 0,
-            sprayDensity: 30,
-            glowIntensity: 0,
-            rainbowMode: false,
-            gradientType: 'linear',
-            gradientColors: ['#7c3aed', '#ec4899'],
-            gradientAngle: 90,
-            polygonSides: 6,
-            fontFamily: 'Arial',
-            fontSize: 32
-        };
+    const currDisplay = document.getElementById('currDisplay');
+    const prevDisplay = document.getElementById('prevDisplay');
+    const historyPanel = document.getElementById('historyPanel');
+    const historyList = document.getElementById('historyList');
 
-        app.ctx = app.canvas.getContext('2d', { willReadFrequently: true });
-        app.previewCtx = app.previewCanvas.getContext('2d');
+    function updateDisplay() {
+        let displayValue = currentInput;
+        
+        let formatted = displayValue
+            .replace(/\*/g, '×')
+            .replace(/\//g, '÷');
 
-        // Color palette
-        const colorPalette = [
-            '#000000', '#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00',
-            '#FF00FF', '#00FFFF', '#FFA500', '#800080', '#008000', '#FFC0CB',
-            '#808080', '#A52A2A', '#FFD700', '#4B0082', '#FF1493', '#00CED1',
-            '#8B4513', '#2F4F4F', '#DC143C', '#4169E1', '#32CD32', '#FF69B4'
-        ];
+        currDisplay.textContent = formatted;
+        
+        currDisplay.classList.remove('result-anim');
+        void currDisplay.offsetWidth; 
+        currDisplay.classList.add('result-anim');
+    }
 
-        function initColorPalette() {
-            const palette = document.getElementById('color-palette');
-            colorPalette.forEach(color => {
-                const div = document.createElement('div');
-                div.className = 'palette-color';
-                div.style.background = color;
-                div.addEventListener('click', () => {
-                    app.primaryColor = color;
-                    document.getElementById('primary-color').value = color;
-                    document.getElementById('primary-color-swatch').style.background = color;
-                    document.querySelectorAll('.palette-color').forEach(el => el.classList.remove('active'));
-                    div.classList.add('active');
-                });
-                palette.appendChild(div);
-            });
+    function appendValue(val) {
+        if (currDisplay.textContent === 'Error') shouldResetScreen = true;
+        
+        if (currentInput === '0' || shouldResetScreen) {
+            currentInput = val === '.' ? '0.' : val;
+            shouldResetScreen = false;
+        } else {
+            if (val === '.' && currentInput.split(/[\+\-\*\/]/).pop().includes('.')) return;
+            currentInput += val;
         }
+        updateDisplay();
+    }
 
-        // Rainbow mode
-        document.getElementById('rainbow-toggle').addEventListener('click', function() {
-            this.classList.toggle('active');
-            app.rainbowMode = this.classList.contains('active');
-            document.getElementById('canvas-wrapper').classList.toggle('rainbow-mode', app.rainbowMode);
-        });
+    function clearDisplay() {
+        currentInput = '0';
+        previousInput = '';
+        prevDisplay.textContent = '';
+        shouldResetScreen = false;
+        updateDisplay();
+    }
 
-        // Gradient builder
-        function updateGradientPreview() {
-            const preview = document.getElementById('gradient-preview');
-            if (app.gradientType === 'linear') {
-                preview.style.background = `linear-gradient(${app.gradientAngle}deg, ${app.gradientColors.join(', ')})`;
-            } else if (app.gradientType === 'radial') {
-                preview.style.background = `radial-gradient(circle, ${app.gradientColors.join(', ')})`;
-            } else {
-                preview.style.background = `conic-gradient(from ${app.gradientAngle}deg, ${app.gradientColors.join(', ')})`;
-            }
+    function deleteChar() {
+        if (shouldResetScreen) {
+            clearDisplay();
+            return;
         }
-
-        document.querySelectorAll('.gradient-type-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.gradient-type-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                app.gradientType = this.dataset.type;
-                updateGradientPreview();
-            });
-        });
-
-        document.getElementById('add-color-stop').addEventListener('click', () => {
-            app.gradientColors.push('#ff00ff');
-            updateColorStops();
-            updateGradientPreview();
-        });
-
-        document.getElementById('gradient-angle').addEventListener('input', function() {
-            app.gradientAngle = parseInt(this.value);
-            document.getElementById('gradient-angle-value').textContent = app.gradientAngle + '°';
-            updateGradientPreview();
-        });
-
-        function updateColorStops() {
-            const container = document.getElementById('color-stops');
-            container.innerHTML = '';
-            app.gradientColors.forEach((color, index) => {
-                const stop = document.createElement('div');
-                stop.className = 'color-stop';
-                stop.style.background = color;
-                stop.innerHTML = `<div class="color-stop-remove">×</div>`;
-                
-                stop.addEventListener('click', () => {
-                    const input = document.createElement('input');
-                    input.type = 'color';
-                    input.value = color;
-                    input.addEventListener('change', () => {
-                        app.gradientColors[index] = input.value;
-                        updateColorStops();
-                        updateGradientPreview();
-                    });
-                    input.click();
-                });
-
-                stop.querySelector('.color-stop-remove').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (app.gradientColors.length > 2) {
-                        app.gradientColors.splice(index, 1);
-                        updateColorStops();
-                        updateGradientPreview();
-                    }
-                });
-
-                container.appendChild(stop);
-            });
+        if (currentInput.length === 1 || currentInput === 'Error') {
+            currentInput = '0';
+        } else {
+            currentInput = currentInput.slice(0, -1);
         }
+        updateDisplay();
+    }
 
-        // Social sharing
-        document.querySelector('.share-trigger').addEventListener('click', () => {
-            document.querySelector('.share-menu').classList.toggle('active');
-        });
+    function calculate() {
+        if (shouldResetScreen) return;
+        
+        previousInput = currentInput;
+        let evalString = currentInput.replace(/(\d+)%/g, '($1/100)');
 
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', async () => {
-                const platform = btn.dataset.platform;
-                const dataURL = app.canvas.toDataURL('image/png');
-                const blob = await (await fetch(dataURL)).blob();
-                const file = new File([blob], 'multicolor-square.png', { type: 'image/png' });
-                
-                const shareData = {
-                    title: 'MULTICOLOR SQUARE Artwork',
-                    text: 'Создано в MULTICOLOR SQUARE',
-                    files: [file]
-                };
+        try {
+            let result = eval(evalString);
+            if (!isFinite(result) || isNaN(result)) throw new Error("Invalid");
 
-                if (platform === 'telegram') {
-                    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
-                        try {
-                            await navigator.share(shareData);
-                        } catch (err) {
-                            fallbackShare(platform, dataURL);
-                        }
-                    } else {
-                        fallbackShare(platform, dataURL);
-                    }
-                } else {
-                    fallbackShare(platform, dataURL);
-                }
-            });
-        });
+            result = parseFloat(result.toFixed(10)).toString();
+            
+            addToHistory(previousInput, result);
+            
+            prevDisplay.textContent = previousInput.replace(/\*/g, '×').replace(/\//g, '÷');
+            currentInput = result;
+            shouldResetScreen = true;
+            updateDisplay();
+            
+        } catch (e) {
+            currentInput = 'Error';
+            shouldResetScreen = true;
+            updateDisplay();
+        }
+    }
 
-        function fallbackShare(platform, dataURL) {
-            const urls = {
-                telegram: 'https://t.me/share/url?url=',
-                vk: 'https://vk.com/share.php?url=',
-                pinterest: 'https://pinterest.com/pin/create/button/?url=',
-                whatsapp: 'https://wa.me/?text=',
-                twitter: 'https://twitter.com/intent/tweet?text='
+    function addToHistory(expression, result) {
+        let cleanExpr = expression.replace(/\*/g, '×').replace(/\//g, '÷');
+        history.unshift({ expr: cleanExpr, res: result });
+        if (history.length > 20) history.pop();
+        renderHistory();
+    }
+
+    function renderHistory() {
+        historyList.innerHTML = '';
+        if (history.length === 0) {
+            historyList.innerHTML = '<div class="text-white/10 text-center mt-10 italic text-sm">Нет записей</div>';
+            return;
+        }
+        
+        history.forEach(item => {
+            const el = document.createElement('div');
+            el.className = "history-item p-4 cursor-pointer border-b border-white/5 group";
+            el.innerHTML = `
+                <div class="text-white/20 text-[10px] tracking-widest uppercase mb-1">${item.expr}</div>
+                <div class="text-white/80 text-xl font-light group-hover:text-[#d4af37] transition-colors">${item.res}</div>
+            `;
+            el.onclick = () => {
+                currentInput = item.res;
+                shouldResetScreen = false;
+                updateDisplay();
+                toggleHistory();
             };
-            
-            if (urls[platform]) {
-                window.open(urls[platform] + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400');
-            }
-            
-            const a = document.createElement('a');
-            a.href = dataURL;
-            a.download = 'multicolor-square.png';
-            a.click();
-        }
-
-        // Tool selection
-        document.querySelectorAll('.tool-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                app.currentTool = btn.dataset.tool;
-                document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                document.getElementById('gradient-settings').style.display = app.currentTool === 'gradient' ? 'block' : 'none';
-                document.getElementById('spray-settings').style.display = app.currentTool === 'spray' ? 'block' : 'none';
-                document.getElementById('text-settings').style.display = app.currentTool === 'text' ? 'block' : 'none';
-                document.getElementById('polygon-settings').style.display = app.currentTool === 'polygon' ? 'block' : 'none';
-            });
+            historyList.appendChild(el);
         });
-
-        // Sliders
-        document.getElementById('brush-size').addEventListener('input', function() {
-            app.brushSize = parseInt(this.value);
-            document.getElementById('brush-size-value').textContent = app.brushSize + 'px';
-        });
-
-        document.getElementById('opacity').addEventListener('input', function() {
-            app.opacity = parseInt(this.value);
-            document.getElementById('opacity-value').textContent = app.opacity + '%';
-        });
-
-        document.getElementById('hardness').addEventListener('input', function() {
-            app.hardness = parseInt(this.value);
-            document.getElementById('hardness-value').textContent = app.hardness + '%';
-        });
-
-        document.getElementById('glow-intensity').addEventListener('input', function() {
-            app.glowIntensity = parseInt(this.value);
-            document.getElementById('glow-intensity-value').textContent = app.glowIntensity + 'px';
-        });
-
-        document.getElementById('spray-density').addEventListener('input', function() {
-            app.sprayDensity = parseInt(this.value);
-            document.getElementById('spray-density-value').textContent = app.sprayDensity;
-        });
-
-        document.getElementById('font-size').addEventListener('input', function() {
-            app.fontSize = parseInt(this.value);
-            document.getElementById('font-size-value').textContent = app.fontSize + 'px';
-        });
-
-        document.getElementById('polygon-sides').addEventListener('input', function() {
-            app.polygonSides = parseInt(this.value);
-            document.getElementById('polygon-sides-value').textContent = app.polygonSides;
-        });
-
-        // Color pickers
-        document.getElementById('primary-color-swatch').addEventListener('click', () => {
-            document.getElementById('primary-color').click();
-        });
-
-        document.getElementById('primary-color').addEventListener('input', function() {
-            app.primaryColor = this.value;
-            document.getElementById('primary-color-swatch').style.background = this.value;
-        });
-
-        document.getElementById('secondary-color-swatch').addEventListener('click', () => {
-            document.getElementById('secondary-color').click();
-        });
-
-        document.getElementById('secondary-color').addEventListener('input', function() {
-            app.secondaryColor = this.value;
-            document.getElementById('secondary-color-swatch').style.background = this.value;
-        });
-
-        document.getElementById('blend-mode').addEventListener('change', function() {
-            app.blendMode = this.value;
-        });
-
-        document.getElementById('font-family').addEventListener('change', function() {
-            app.fontFamily = this.value;
-        });
-
-        // Modals
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
-
-        document.getElementById('effects-btn').addEventListener('click', () => openModal('effects-modal'));
-        document.getElementById('effects-close-btn').addEventListener('click', () => closeModal('effects-modal'));
-
-        document.getElementById('filters-btn').addEventListener('click', () => openModal('filters-modal'));
-        document.getElementById('filters-close-btn').addEventListener('click', () => closeModal('filters-modal'));
-
-        document.getElementById('canvas-size-btn').addEventListener('click', () => openModal('canvas-size-modal'));
-        document.getElementById('canvas-size-cancel').addEventListener('click', () => closeModal('canvas-size-modal'));
-
-        document.getElementById('export-btn').addEventListener('click', () => openModal('export-modal'));
-        document.getElementById('export-cancel').addEventListener('click', () => closeModal('export-modal'));
-
-        document.getElementById('layers-btn').addEventListener('click', () => {
-            document.getElementById('layers-panel').classList.toggle('open');
-        });
-
-        // Canvas size presets
-        document.querySelectorAll('[data-width][data-height]').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.getElementById('custom-width').value = this.dataset.width;
-                document.getElementById('custom-height').value = this.dataset.height;
-            });
-        });
-
-        document.getElementById('canvas-size-confirm').addEventListener('click', () => {
-            const width = parseInt(document.getElementById('custom-width').value);
-            const height = parseInt(document.getElementById('custom-height').value);
-            const mode = document.getElementById('resize-mode').value;
-            
-            if (width > 0 && height > 0 && width <= 4000 && height <= 4000) {
-                resizeCanvas(width, height, mode);
-                closeModal('canvas-size-modal');
-            }
-        });
-
-        // Export quality slider
-        document.getElementById('export-quality').addEventListener('input', function() {
-            document.getElementById('export-quality-value').textContent = this.value + '%';
-        });
-
-        document.getElementById('export-confirm').addEventListener('click', () => {
-            const format = document.getElementById('export-format').value;
-            const quality = parseInt(document.getElementById('export-quality').value) / 100;
-            
-            let mimeType = 'image/png';
-            if (format === 'jpeg') mimeType = 'image/jpeg';
-            else if (format === 'webp') mimeType = 'image/webp';
-            
-            const dataURL = app.canvas.toDataURL(mimeType, quality);
-            const a = document.createElement('a');
-            a.href = dataURL;
-            a.download = `multicolor-square.${format}`;
-            a.click();
-            
-            closeModal('export-modal');
-        });
-
-        // Effects
-        document.querySelectorAll('[data-effect]').forEach(btn => {
-            btn.addEventListener('click', function() {
-                applyEffect(this.dataset.effect);
-            });
-        });
-
-        document.querySelectorAll('[data-filter]').forEach(btn => {
-            btn.addEventListener('click', function() {
-                applyFilter(this.dataset.filter);
-                closeModal('filters-modal');
-            });
-        });
-
-        function applyEffect(effect) {
-            const ctx = getCurrentLayerContext();
-            const canvas = app.layers[app.currentLayer].canvas;
-            
-            // Implement effects here
-            console.log('Applying effect:', effect);
-            
-            renderLayers();
-            saveHistory();
-        }
-
-        function applyFilter(filter) {
-            const ctx = getCurrentLayerContext();
-            const imageData = ctx.getImageData(0, 0, app.canvas.width, app.canvas.height);
-            const data = imageData.data;
-
-            for (let i = 0; i < data.length; i += 4) {
-                let r = data[i], g = data[i + 1], b = data[i + 2];
-
-                switch(filter) {
-                    case 'grayscale':
-                        const gray = 0.299 * r + 0.587 * g + 0.114 * b;
-                        data[i] = data[i + 1] = data[i + 2] = gray;
-                        break;
-                    case 'sepia':
-                        data[i] = Math.min(255, r * 0.393 + g * 0.769 + b * 0.189);
-                        data[i + 1] = Math.min(255, r * 0.349 + g * 0.686 + b * 0.168);
-                        data[i + 2] = Math.min(255, r * 0.272 + g * 0.534 + b * 0.131);
-                        break;
-                    case 'invert':
-                        data[i] = 255 - r;
-                        data[i + 1] = 255 - g;
-                        data[i + 2] = 255 - b;
-                        break;
-                    case 'brightness':
-                        data[i] = Math.min(255, r + 40);
-                        data[i + 1] = Math.min(255, g + 40);
-                        data[i + 2] = Math.min(255, b + 40);
-                        break;
-                    case 'darkness':
-                        data[i] = Math.max(0, r - 40);
-                        data[i + 1] = Math.max(0, g - 40);
-                        data[i + 2] = Math.max(0, b - 40);
-                        break;
-                    case 'contrast':
-                        const factor = 1.6;
-                        data[i] = Math.min(255, Math.max(0, factor * (r - 128) + 128));
-                        data[i + 1] = Math.min(255, Math.max(0, factor * (g - 128) + 128));
-                        data[i + 2] = Math.min(255, Math.max(0, factor * (b - 128) + 128));
-                        break;
-                    case 'vintage':
-                        data[i] = Math.min(255, r * 1.15);
-                        data[i + 1] = Math.min(255, g * 0.95);
-                        data[i + 2] = Math.min(255, b * 0.75);
-                        break;
-                    case 'warm':
-                        data[i] = Math.min(255, r + 25);
-                        data[i + 2] = Math.max(0, b - 25);
-                        break;
-                    case 'cool':
-                        data[i] = Math.max(0, r - 25);
-                        data[i + 2] = Math.min(255, b + 25);
-                        break;
-                    case 'saturation':
-                        const sat = 1.5;
-                        const avg = (r + g + b) / 3;
-                        data[i] = Math.min(255, Math.max(0, avg + sat * (r - avg)));
-                        data[i + 1] = Math.min(255, Math.max(0, avg + sat * (g - avg)));
-                        data[i + 2] = Math.min(255, Math.max(0, avg + sat * (b - avg)));
-                        break;
-                }
-            }
-
-            if (filter === 'blur') {
-                ctx.filter = 'blur(4px)';
-                ctx.drawImage(app.layers[app.currentLayer].canvas, 0, 0);
-                ctx.filter = 'none';
-            } else if (filter === 'sharpen') {
-                ctx.filter = 'contrast(1.4) brightness(1.1)';
-                ctx.drawImage(app.layers[app.currentLayer].canvas, 0, 0);
-                ctx.filter = 'none';
-            } else {
-                ctx.putImageData(imageData, 0, 0);
-            }
-
-            renderLayers();
-            saveHistory();
-        }
-
-        // Zoom controls
-        document.getElementById('zoom-in').addEventListener('click', () => {
-            app.zoom = Math.min(4, app.zoom + 0.25);
-            updateZoom();
-        });
-
-        document.getElementById('zoom-out').addEventListener('click', () => {
-            app.zoom = Math.max(0.25, app.zoom - 0.25);
-            updateZoom();
-        });
-
-        document.getElementById('zoom-reset').addEventListener('click', () => {
-            app.zoom = 1;
-            updateZoom();
-        });
-
-        function updateZoom() {
-            app.canvas.style.transform = `scale(${app.zoom})`;
-            app.previewCanvas.style.transform = `scale(${app.zoom})`;
-            document.getElementById('zoom-display').textContent = Math.round(app.zoom * 100) + '%';
-        }
-
-        // Layers system (simplified)
-        function initLayers() {
-            app.layers.push({
-                name: 'Фон',
-                canvas: createOffscreenCanvas(),
-                visible: true,
-                locked: false
-            });
-            app.currentLayer = 0;
-            updateLayersPanel();
-            renderLayers();
-        }
-
-        function createOffscreenCanvas() {
-            const canvas = document.createElement('canvas');
-            canvas.width = app.canvas.width;
-            canvas.height = app.canvas.height;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            return canvas;
-        }
-
-        function addLayer() {
-            const newLayer = {
-                name: `Слой ${app.layers.length}`,
-                canvas: createOffscreenCanvas(),
-                visible: true,
-                locked: false
-            };
-            const ctx = newLayer.canvas.getContext('2d');
-            ctx.clearRect(0, 0, newLayer.canvas.width, newLayer.canvas.height);
-            app.layers.push(newLayer);
-            app.currentLayer = app.layers.length - 1;
-            updateLayersPanel();
-            saveHistory();
-        }
-
-        function updateLayersPanel() {
-            const list = document.getElementById('layers-list');
-            list.innerHTML = '';
-            
-            [...app.layers].reverse().forEach((layer, index) => {
-                const actualIndex = app.layers.length - 1 - index;
-                const div = document.createElement('div');
-                div.className = 'layer-item' + (actualIndex === app.currentLayer ? ' active' : '');
-                div.innerHTML = `
-                    <canvas class="layer-preview" width="42" height="42"></canvas>
-                    <div style="flex: 1;">
-                        <div style="font-size: 14px; font-weight: 600;">${layer.name}</div>
-                    </div>
-                `;
-                
-                const preview = div.querySelector('.layer-preview');
-                const ctx = preview.getContext('2d');
-                ctx.drawImage(layer.canvas, 0, 0, 42, 32);
-                
-                div.addEventListener('click', () => {
-                    app.currentLayer = actualIndex;
-                    updateLayersPanel();
-                });
-                
-                list.appendChild(div);
-            });
-        }
-
-        function renderLayers() {
-            app.ctx.clearRect(0, 0, app.canvas.width, app.canvas.height);
-            app.layers.forEach(layer => {
-                if (layer.visible) {
-                    app.ctx.drawImage(layer.canvas, 0, 0);
-                }
-            });
-        }
-
-        function getCurrentLayerContext() {
-            return app.layers[app.currentLayer].canvas.getContext('2d', { willReadFrequently: true });
-        }
-
-        document.getElementById('add-layer-btn').addEventListener('click', addLayer);
-
-        // History
-        function saveHistory() {
-            if (app.historyStep < app.history.length - 1) {
-                app.history = app.history.slice(0, app.historyStep + 1);
-            }
-            
-            const state = app.layers.map(layer => {
-                const canvas = document.createElement('canvas');
-                canvas.width = layer.canvas.width;
-                canvas.height = layer.canvas.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(layer.canvas, 0, 0);
-                return { ...layer, canvas };
-            });
-            
-            app.history.push(state);
-            
-            if (app.history.length > app.maxHistory) {
-                app.history.shift();
-            } else {
-                app.historyStep++;
-            }
-        }
-
-        function undo() {
-            if (app.historyStep > 0) {
-                app.historyStep--;
-                restoreHistory();
-            }
-        }
-
-        function redo() {
-            if (app.historyStep < app.history.length - 1) {
-                app.historyStep++;
-                restoreHistory();
-            }
-        }
-
-        function restoreHistory() {
-            const state = app.history[app.historyStep];
-            app.layers = state.map(layer => {
-                const canvas = document.createElement('canvas');
-                canvas.width = layer.canvas.width;
-                canvas.height = layer.canvas.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(layer.canvas, 0, 0);
-                return { ...layer, canvas };
-            });
-            renderLayers();
-            updateLayersPanel();
-        }
-
-        document.getElementById('undo-btn').addEventListener('click', undo);
-        document.getElementById('redo-btn').addEventListener('click', redo);
-
-        // Drawing functions (simplified)
-        function setupDrawingTools() {
-            app.canvas.addEventListener('mousedown', startDrawing);
-            app.canvas.addEventListener('mousemove', draw);
-            app.canvas.addEventListener('mouseup', stopDrawing);
-            app.canvas.addEventListener('mouseout', stopDrawing);
-        }
-
-        function startDrawing(e) {
-            if (app.layers[app.currentLayer].locked) return;
-            
-            app.isDrawing = true;
-            const rect = app.canvas.getBoundingClientRect();
-            app.startX = (e.clientX - rect.left) / app.zoom;
-            app.startY = (e.clientY - rect.top) / app.zoom;
-            app.lastX = app.startX;
-            app.lastY = app.startY;
-            
-            if (app.currentTool === 'brush') {
-                drawBrush(app.startX, app.startY);
-            }
-        }
-
-        function draw(e) {
-            if (!app.isDrawing) return;
-            if (app.layers[app.currentLayer].locked) return;
-            
-            const rect = app.canvas.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / app.zoom;
-            const y = (e.clientY - rect.top) / app.zoom;
-            
-            if (app.currentTool === 'brush') {
-                drawBrush(x, y);
-                app.lastX = x;
-                app.lastY = y;
-            }
-        }
-
-        function stopDrawing() {
-            if (!app.isDrawing) return;
-            app.isDrawing = false;
-            renderLayers();
-            saveHistory();
-        }
-
-        function drawBrush(x, y) {
-            const ctx = getCurrentLayerContext();
-            ctx.globalCompositeOperation = app.blendMode;
-            ctx.globalAlpha = app.opacity / 100;
-            
-            if (app.rainbowMode) {
-                const hue = (Date.now() / 10) % 360;
-                ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-            } else {
-                ctx.strokeStyle = app.primaryColor;
-            }
-            
-            ctx.lineWidth = app.brushSize;
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            
-            if (app.glowIntensity > 0) {
-                ctx.shadowBlur = app.glowIntensity;
-                ctx.shadowColor = ctx.strokeStyle;
-            } else {
-                ctx.shadowBlur = 0;
-            }
-            
-            ctx.beginPath();
-            ctx.moveTo(app.lastX, app.lastY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            
-            renderLayers();
-        }
-
-        function resizeCanvas(width, height, mode) {
-            const oldLayers = app.layers.map(layer => {
-                const temp = document.createElement('canvas');
-                temp.width = layer.canvas.width;
-                temp.height = layer.canvas.height;
-                const ctx = temp.getContext('2d');
-                ctx.drawImage(layer.canvas, 0, 0);
-                return temp;
-            });
-
-            app.canvas.width = width;
-            app.canvas.height = height;
-            app.previewCanvas.width = width;
-            app.previewCanvas.height = height;
-
-            app.layers.forEach((layer, i) => {
-                layer.canvas.width = width;
-                layer.canvas.height = height;
-                const ctx = layer.canvas.getContext('2d');
-                
-                if (mode === 'scale') {
-                    ctx.drawImage(oldLayers[i], 0, 0, width, height);
-                } else if (mode === 'crop') {
-                    ctx.drawImage(oldLayers[i], 0, 0);
-                } else if (mode === 'clear' && i === 0) {
-                    ctx.fillStyle = 'white';
-                    ctx.fillRect(0, 0, width, height);
-                }
-            });
-
-            renderLayers();
-            saveHistory();
-        }
-
-        // Additional actions
-        document.getElementById('flip-h-btn').addEventListener('click', () => {
-            const ctx = getCurrentLayerContext();
-            const temp = document.createElement('canvas');
-            temp.width = app.canvas.width;
-            temp.height = app.canvas.height;
-            const tempCtx = temp.getContext('2d');
-            tempCtx.drawImage(app.layers[app.currentLayer].canvas, 0, 0);
-            
-            ctx.clearRect(0, 0, app.canvas.width, app.canvas.height);
-            ctx.scale(-1, 1);
-            ctx.drawImage(temp, -app.canvas.width, 0);
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            renderLayers();
-            saveHistory();
-        });
-
-        document.getElementById('flip-v-btn').addEventListener('click', () => {
-            const ctx = getCurrentLayerContext();
-            const temp = document.createElement('canvas');
-            temp.width = app.canvas.width;
-            temp.height = app.canvas.height;
-            const tempCtx = temp.getContext('2d');
-            tempCtx.drawImage(app.layers[app.currentLayer].canvas, 0, 0);
-            
-            ctx.clearRect(0, 0, app.canvas.width, app.canvas.height);
-            ctx.scale(1, -1);
-            ctx.drawImage(temp, 0, -app.canvas.height);
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            renderLayers();
-            saveHistory();
-        });
-
-        document.getElementById('rotate-btn').addEventListener('click', () => {
-            const ctx = getCurrentLayerContext();
-            const temp = document.createElement('canvas');
-            temp.width = app.canvas.width;
-            temp.height = app.canvas.height;
-            const tempCtx = temp.getContext('2d');
-            tempCtx.drawImage(app.layers[app.currentLayer].canvas, 0, 0);
-            
-            ctx.clearRect(0, 0, app.canvas.width, app.canvas.height);
-            ctx.translate(app.canvas.width / 2, app.canvas.height / 2);
-            ctx.rotate(Math.PI / 2);
-            ctx.drawImage(temp, -app.canvas.width / 2, -app.canvas.height / 2);
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            renderLayers();
-            saveHistory();
-        });
-
-        document.getElementById('clear-btn').addEventListener('click', () => {
-            if (confirm('Очистить слой?')) {
-                const ctx = getCurrentLayerContext();
-                ctx.clearRect(0, 0, app.canvas.width, app.canvas.height);
-                renderLayers();
-                saveHistory();
-            }
-        });
-
-        // File operations
-        document.getElementById('new-btn').addEventListener('click', () => {
-            if (confirm('Создать новый проект?')) location.reload();
-        });
-
-        document.getElementById('save-btn').addEventListener('click', () => {
-            const data = {
-                layers: app.layers.map(l => ({
-                    name: l.name,
-                    visible: l.visible,
-                    locked: l.locked,
-                    data: l.canvas.toDataURL()
-                })),
-                width: app.canvas.width,
-                height: app.canvas.height
-            };
-            
-            const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'multicolor-square-project.json';
-            a.click();
-        });
-
-        document.getElementById('open-btn').addEventListener('click', () => {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            input.onchange = (e) => {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const data = JSON.parse(event.target.result);
-                    app.canvas.width = data.width;
-                    app.canvas.height = data.height;
-                    app.previewCanvas.width = data.width;
-                    app.previewCanvas.height = data.height;
-                    
-                    app.layers = [];
-                    let loaded = 0;
-                    data.layers.forEach((layerData, i) => {
-                        const img = new Image();
-                        img.onload = () => {
-                            const canvas = createOffscreenCanvas();
-                            const ctx = canvas.getContext('2d');
-                            ctx.clearRect(0, 0, canvas.width, canvas.height);
-                            ctx.drawImage(img, 0, 0);
-                            
-                            app.layers[i] = {
-                                name: layerData.name,
-                                canvas,
-                                visible: layerData.visible,
-                                locked: layerData.locked
-                            };
-                            
-                            loaded++;
-                            if (loaded === data.layers.length) {
-                                renderLayers();
-                                updateLayersPanel();
-                                saveHistory();
-                            }
-                        };
-                        img.src = layerData.data;
-                    });
-                };
-                reader.readAsText(file);
-            };
-            input.click();
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                if (e.key === 'z') {
-                    e.preventDefault();
-                    undo();
-                } else if (e.key === 'y') {
-                    e.preventDefault();
-                    redo();
-                } else if (e.key === 's') {
-                    e.preventDefault();
-                    document.getElementById('save-btn').click();
-                }
-            }
-        });
-
-        // Initialize
-        function init() {
-            initColorPalette();
-            initLayers();
-            setupDrawingTools();
-            updateGradientPreview();
-            updateColorStops();
-            saveHistory();
-        }
-
-        init();
-    </script>
+    }
+
+    document.getElementById('historyBtn').onclick = toggleHistory;
+    document.getElementById('closeHistory').onclick = toggleHistory;
+    document.getElementById('clearHistory').onclick = () => {
+        history = [];
+        renderHistory();
+    };
+
+    function toggleHistory() {
+        historyPanel.classList.toggle('hidden');
+    }
+
+    document.addEventListener('keydown', (e) => {
+        const key = e.key;
+        if (/[0-9]/.test(key)) appendValue(key);
+        if (key === '.') appendValue('.');
+        if (key === '+' || key === '-' || key === '*' || key === '/') appendValue(key);
+        if (key === 'Enter' || key === '=') calculate();
+        if (key === 'Backspace') deleteChar();
+        if (key === 'Escape') clearDisplay();
+    });
+</script>
 </body>
 </html>
